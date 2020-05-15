@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1589504423 source:c:\users\braian\desktop\facultad\criptografia\parcial 2\src\simoncipher\main.cpp
+	<iostream>
+	"Cipher.h"
+	"NumericFunction.h"
+
+1589501502 c:\users\braian\desktop\facultad\criptografia\parcial 2\src\simoncipher\include\cipher.h
+	<iostream>
+
+1589504415 source:c:\users\braian\desktop\facultad\criptografia\parcial 2\src\simoncipher\src\cipher.cpp
+	"Cipher.h"
+
+1589504466 c:\users\braian\desktop\facultad\criptografia\parcial 2\src\simoncipher\include\numericfunction.h
+	<iostream>
+
