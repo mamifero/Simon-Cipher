@@ -2,6 +2,7 @@
 
 #include "Cipher.h"
 #include "NumericFunction.h"
+#include "BMPManager.h"
 
 using namespace std;
 
