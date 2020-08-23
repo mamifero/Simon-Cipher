@@ -4,15 +4,17 @@
 
 BMPManager::BMPManager(){}
 
-BMPManager::BMPManager(const char*file){
+BMPManager::BMPManager(string file,string output){
 
         ///Intenta abrirlo, sino se rompe todo
+        inputFile = file;
+        outputFile = output;
         archivo.open(file, ios::binary);
         if(archivo.fail())
             cerr << "Error al abrir el archivo" << endl;
 
         ///Seteo el file path, todavia no se para que
-        strcpy(filePath, file);
+        //strcpy(filePath, file);
 
         ///Guardo el header en un vector de bytes
         archivo.read((char*)headerbytes, sizeof(headerbytes));
@@ -25,7 +27,7 @@ BMPManager::BMPManager(const char*file){
         if(strcmp((char*)filetype,"BM")!=0)
             cout << "solo manejo archivos de mapa de bits"<<endl;
 
-        filesize = *(uint32_t*)(headerbytes+2);
+        filesize = *(uint64_t*)(headerbytes+2);
         dibheadersize = *(uint32_t*)(headerbytes + 14);
         width = *(uint32_t*)(headerbytes + 18);
         height = *(uint32_t*)(headerbytes + 22);
@@ -45,10 +47,10 @@ BMPManager::BMPManager(const char*file){
 
 }
 
-int BMPManager::getFileSize(){
+uint64_t BMPManager::getFileSize(){
 
     streampos begin,end;
-    ifstream myfile (filePath, ios::binary);
+    ifstream myfile (inputFile, ios::binary);
     if(myfile.fail())
             cerr << "Error al abrir el archivo" << endl;
 
@@ -75,7 +77,7 @@ void BMPManager::getFileInfo(){
 
 void BMPManager::saveFileCopy(){
 
-    ofstream destino("copia.bmp", ios::binary);
+    ofstream destino(outputFile, ios::binary);
 
     destino.write((char*)headerbytes, sizeof(headerbytes));
     destino.write((char*)headerinfobytes, dibheadersize);
@@ -87,7 +89,7 @@ void BMPManager::saveFileCopy(){
 }
 
 
-unsigned int BMPManager::getBodySize(){
+uint64_t BMPManager::getBodySize(){
         return bodysize;
 }
 
@@ -108,7 +110,13 @@ void BMPManager::clonebodyBytes(uint8_t* arrayBytes){
     }
 
 
+}   
+
+uint8_t* BMPManager::getBodyBytes(){
+    return bodyBytes;
 }
+
+ 
 
 void BMPManager::setbodyBytes(uint8_t* newArray){
 

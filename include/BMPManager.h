@@ -18,12 +18,13 @@ class BMPManager
 {
     public:
         BMPManager();
-        BMPManager(const char*file);
-        int getFileSize();
+        BMPManager(string file,string output);
+        uint64_t getFileSize();
         void getFileInfo();
         void saveFileCopy();
         void clonebodyBytes(uint8_t*); ///te copia el vector de bytes del cuerpo, no se si vale la pena
-        unsigned int getBodySize();
+        uint64_t getBodySize();
+        uint8_t* getBodyBytes();
         void setbodyBytes(uint8_t*);
         void romperbody();
     protected:
@@ -35,13 +36,14 @@ class BMPManager
         uint8_t *headerinfobytes;
         uint8_t *bodyBytes;
 
-
+        string inputFile;
+        string outputFile;
         uint8_t filetype[3];
-        uint32_t filesize;
+        uint64_t filesize;
         uint32_t dibheadersize;
         uint32_t width;
         uint32_t height;
         uint16_t planes;
         uint16_t bitcount;
-        uint32_t bodysize;
+        uint64_t bodysize;
 };

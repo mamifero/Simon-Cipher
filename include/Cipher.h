@@ -2,6 +2,7 @@
 #define CIPHER_H
 
 #include <iostream>
+#include "NumericFunction.h"
 
 #define u8 uint8_t
 #define u32 uint32_t
@@ -18,30 +19,46 @@
 class Cipher
 {
     public:
-        Cipher();
+        Cipher(u8 key1[],u64 cantBytes1);
 
         u8* GetplainText() { return plainText; }
         u32* Getplain32Block() { return plain32Block; }
-        u64* Getplain64Block() { return plain64Block; }
-        u64* Getcipher64Block() { return cipher64Block; }
+//        u64* Getplain64Block() { return plain64Block; }
+//        u64* Getcipher64Block() { return cipher64Block; }
         u32* Getcipher32Block() { return cipher32Block; }
         u8* GetcipherText() { return cipherText; }
 
-        void Simon64128KeySchedule(u32 K[],u32 rk[]);
+        void Simon64128KeySchedule(u32 K[]);
         void Simon64128Encrypt(u32 Pt[],u32 Ct[],u32 rk[]);
         void Simon64128Decrypt(u32 Pt[],u32 Ct[],u32 rk[]);
+        void showKeyExpanded();
 
-        void encryptECB();
+        u8* encryptECB();
+        u8* desencryptECB();
+        u8* encryptCBC();
+        u8* desencryptCBC();
+
+        void setPlainText(u8 textPlain[]);
+        void setCipherText(u8 textChiper[]);
 
     protected:
 
     private:
-        u8* plainText;
+
         u32* plain32Block;
-        u64* plain64Block;
-        u64* cipher64Block;
         u32* cipher32Block;
+
+        u8* plainText;
         u8* cipherText;
+        u8* key;
+        u32 expandKey[44];
+        u64 cantBytes;
+        u64 cantBlocks;
+
+        //Los remuevo para la version inicial
+        //u64* cipher64Block;
+        //u64* plain64Block;
+
 };
 
 #endif // CIPHER_H

@@ -34,9 +34,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/BMPManager.h" />
 		<Unit filename="include/Cipher.h" />
 		<Unit filename="include/NumericFunction.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/BMPManager.cpp" />
 		<Unit filename="src/Cipher.cpp" />
 		<Unit filename="src/NumericFunction.cpp" />
 		<Extensions />
