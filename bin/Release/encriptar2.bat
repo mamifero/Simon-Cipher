@@ -1,0 +1,1 @@
+SimonCipher.exe -ecbc images/unlam.bmp cifrado.bmp

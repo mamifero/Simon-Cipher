@@ -1,0 +1,1 @@
+SimonCipher.exe -dcbc cifrado.bmp descifrado.bmp
