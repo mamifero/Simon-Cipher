@@ -13,8 +13,9 @@
 1589504466 c:\users\braian\desktop\facultad\criptografia\parcial 2\src\simoncipher\include\numericfunction.h
 	<iostream>
 
-1598197013 source:c:\personal\facultad\criptografia\parcial2\simon-cipher\main.cpp
+1598210669 source:c:\personal\facultad\criptografia\parcial2\simon-cipher\main.cpp
 	<iostream>
+	<string>
 	"Cipher.h"
 	"NumericFunction.h"
 	"BMPManager.h"
@@ -38,7 +39,7 @@
 1598152575 source:c:\personal\facultad\criptografia\parcial2\simon-cipher\src\bmpmanager.cpp
 	"BMPManager.h"
 
-1598196920 source:c:\personal\facultad\criptografia\parcial2\simon-cipher\src\cipher.cpp
+1598210020 source:c:\personal\facultad\criptografia\parcial2\simon-cipher\src\cipher.cpp
 	"Cipher.h"
 	<new>
 	<iostream>

@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+
 
 #include "Cipher.h"
 #include "NumericFunction.h"
@@ -18,19 +20,26 @@ int main(int argc, char *argv[])
         printHelp(argv[0]);
         return 0;
     }
-    std::string mode (argv[1]);
-    std::string input (argv[2]);
-    std::string output (argv[3]);
+    string mode (argv[1]);
+    string input (argv[2]);
+    string output (argv[3]);
+    string inputKey;
 
 
     BMPManager fm(input, output);
 
     //    u8 plain[]= "und likeund like";
-
-    u8 key[] = { 0x00, 0x01, 0x02, 0x03, 0x08, 0x09, 0x0a, 0x0b, 0x10, 0x11, 0x12, 0x13, 0x18, 0x19, 0x1a, 0x1b};
+    cout << "Introduzca la clave por favor (Max 16 caracteres): \n";
+    getline (cin, inputKey);
+    while(inputKey.length() > 16 || inputKey.length() == 0){
+        cout << "La clave no puede ser mayor a 16 carateres o estar vacia. \n";
+        cout << "Introduzca la clave por favor (Max 16 caracteres): \n";
+        getline (cin, inputKey);
+    }
+    u8 key[16] = {0};
+    inputKey.copy((char*)key, inputKey.length());
     u64 cantBytes = fm.getBodySize();
-    //cout << "\ncant bytes:" << cantBytes << '\n';///183729
-    //u8 plain[cantBytes];
+
     u8* outputBody;
 
     u8* inputBody = fm.getBodyBytes();
